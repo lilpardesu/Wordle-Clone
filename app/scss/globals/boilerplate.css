@@ -1,0 +1,22 @@
+html {
+  font-size: 100%;
+  font-family: var(--font-body);
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: hsl(240deg, 3%, 7%);
+  color: hsl(0deg, 0%, 100%);
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}/*# sourceMappingURL=boilerplate.css.map */

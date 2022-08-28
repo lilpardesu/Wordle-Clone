@@ -1,0 +1,11 @@
+.container {
+  padding: 0 1.5rem;
+  max-width: 69.375rem;
+  margin: 0 auto;
+}
+@media (min-width: 71.875em) {
+  .container {
+    padding: 0;
+    transform: translate(0, 0);
+  }
+}/*# sourceMappingURL=layout.css.map */
