@@ -1,0 +1,11 @@
+@use '../util' as *;
+
+.guess {
+    display: ms-grid;
+    ms-template-columns: repeat(5, 1fr);
+    gap: rem(3)
+    &__tile {
+
+    }
+}
+
