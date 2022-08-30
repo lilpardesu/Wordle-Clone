@@ -5,6 +5,7 @@ const test = () => {
 };
 
 // detect keypress (letter, backspace, others)
+document.addEventListener('keydown', () => {console.log("Keypress")})
 
 // updste "letters"
 
