@@ -1,11 +1,20 @@
 @use '../util' as *;
 
-.guess {
-    display: ms-grid;
-    ms-template-columns: repeat(5, 1fr);
-    gap: rem(3)
-    &__tile {
+// $grid-columns: 5;
 
+.guess {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: rem(5);
+    width: 100%;
+
+    &__tile {
+        border: rem(2) solid hsl(0, 0%, 26%);
+        width: rem(51);
+        height: rem(51);
+        display: flex;
+        place-items: center;
     }
 }
 
