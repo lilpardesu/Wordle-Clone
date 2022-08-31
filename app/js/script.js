@@ -1,7 +1,7 @@
 const letteraPattern = /[A-Za-z]/
 let guessCount = 1;
 let currentGuess = document.querySelector("#guess" + guessCount);
-let currentLetters = currentGuess.dataset.letter;
+let currentLetters = currentGuess.dataset.letters;
 
 // detect keypress (letter, backspace, others)
 document.addEventListener('keydown', (e) => {console.log("Keypress: " + e.key)
@@ -10,7 +10,7 @@ document.addEventListener('keydown', (e) => {console.log("Keypress: " + e.key)
 	let keyPress = e.key;
 
 	if (keyPress.length == 1 && letteraPattern.test(e.key)) {
-	    console.log(isLetter);
+		updateLetters(keyPress);
 	}
 	 
 
@@ -19,14 +19,16 @@ document.addEventListener('keydown', (e) => {console.log("Keypress: " + e.key)
 	//other
 })
 
-// updste "letters"
+// update "letters"
 const updateLetters = (letter) => {
-	console.log("guessCount: " + guessCount)
-	console.log("currentLetters: " + currentLetters)
-
-	currentLetters = currentLetters + letter
+	currentGuess.dataset.letters = currentGuess.dataset.letters + letter;
+	let currentTile = currentGuess.dataset.letters.length;
+	updateMarkup(currentTile, letter)
 }
 
 //update tiles based on "letters"
+const updateMarkup = (tileNumber, letter) => {
+	document.querySelector("#guessTile" + tileNumber).innerHTML = letter;
+}
 
 // delete last letter (and call update tiles)

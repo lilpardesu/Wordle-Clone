@@ -14,7 +14,10 @@
         width: rem(51);
         height: rem(51);
         display: flex;
-        place-items: center;
+        justify-content: center;
+        align-items: center;
+        font-size: rem(32);
+        font-weight: 600;
     }
 }
 
