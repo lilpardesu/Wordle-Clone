@@ -4,19 +4,19 @@ let currentGuess = document.querySelector("#guess" + guessCount);
 let currentLetters = currentGuess.dataset.letters;
 
 // detect keypress (letter, backspace, others)
-document.addEventListener('keydown', (e) => {console.log("Keypress: " + e.key)
+document.addEventListener('keydown', (e) => {
+
+	let keyPress = e.key
 
 	//letter
-	let keyPress = e.key;
-
 	if (keyPress.length == 1 && letteraPattern.test(e.key)) {
 		updateLetters(keyPress);
 	}
 	 
-
 	//backspace
-
-	//other
+	else if (keyPress == "Backspace"){
+		deleteLetter();
+	}
 })
 
 // update "letters"
@@ -31,4 +31,16 @@ const updateMarkup = (tileNumber, letter) => {
 	document.querySelector("#guessTile" + tileNumber).innerHTML = letter;
 }
 
-// delete last letter (and call update tiles)
+// delete last letter
+const deleteLetter = () => {
+	let oldLetters = currentGuess.dataset.letters;
+	let newLetters = oldLetters.slice(0, -1);
+	currentGuess.dataset.letters = newLetters;
+	let currentTile = currentGuess.dataset.letters.length+1;
+	deleteMarkup(currentTile);
+}
+
+//delete markup
+const deleteMarkup = (tileNumber) => {
+	document.querySelector("#guessTile" + tileNumber).innerHTML = null;
+}
