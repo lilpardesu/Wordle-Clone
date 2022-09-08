@@ -13,7 +13,7 @@ const chooseWord = (array) => {
 		solutionWord = array[randomNumber];
 	}
 	else {
-		chooseWord(words);
+		chooseWord(array);
 	}
 }
 chooseWord(words);
