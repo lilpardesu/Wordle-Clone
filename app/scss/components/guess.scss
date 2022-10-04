@@ -20,16 +20,19 @@
         font-weight: 600;
     }
 
-    .true {
+    .match {
         background-color: hsl(115, 29%, 43%);
+        border-color: hsl(115, 29%, 43%);
     }
 
     .present {
-        background-color: hsl(49, 51%, 47%)
+        background-color: hsl(49, 51%, 47%);
+        border-color: hsl(49, 51%, 47%);
     }
 
-    .false {
+    .absent {
         background-color: hsl(240, 2%, 23%);
+        border-color: hsl(240, 2%, 23%);
     }
 }
 

@@ -38,7 +38,7 @@ document.addEventListener('keydown', (e) => {
 	else if (keyPress == "Enter" && currentGuess.dataset.letters.length == 5) {
 		for (let i = 0; i<5; i++) {
 			checkLetter(i);
-			revealTile(checkLetter(i));
+			revealTile(i, checkLetter(i));
 		}
 	}
 })
@@ -76,26 +76,33 @@ const checkLetter = (position) => {
 
 	// if match
 	if (guessedLetter == solutionLetter) {
-		console.log("match");
+		return "match";
 	}
 
 	// if present
 	else if (solutionWord.includes(guessedLetter)) {
-		console.log("present");
+		return "present";
 	}
 
 	// if does not exist
 	else {
-		console.log("false");
+		return "absent";
 	}
 }
 
-const revealTile = (status) => {
-	switch(status) {
-		case "match":
+const revealTile = (i, status) => {
+	console.log(i);
+	console.log(status);
+	let tileNumber = i + 1;
+	let tile = document.querySelector('#guessTile' + tileNumber);
 
-		case "present":
-
-		case "false":
+	if (status === "match") {
+		tile.classList.add("match");
+	}
+	else if (status === "present") {
+		tile.classList.add("present");
+	}
+	else {
+		tile.classList.add("absent");
 	}
 }
