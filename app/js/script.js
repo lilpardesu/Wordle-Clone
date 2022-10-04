@@ -24,20 +24,23 @@ document.addEventListener('keydown', (e) => {
 
 	let keyPress = e.key
 
-	//letter
+	// letter
 	if (keyPress.length == 1 && letteraPattern.test(e.key) && currentGuess.dataset.letters.length < 5) {
 		updateLetters(keyPress);
 	}
 	 
-	//backspace
+	// backspace
 	else if (keyPress == "Backspace" && currentLetters != null){
 		deleteLetter();
 	}
 
-	//enter
-	// else if (keyPress == "Enter" && == 5) {
-
-	// }
+	// enter
+	else if (keyPress == "Enter" && currentGuess.dataset.letters.length == 5) {
+		for (let i = 0; i<5; i++) {
+			checkLetter(i);
+			revealTile(checkLetter(i));
+		}
+	}
 })
 
 // update "letters"
@@ -47,7 +50,7 @@ const updateLetters = (letter) => {
 	updateMarkup(currentTile, letter)
 }
 
-//update tiles based on "letters"
+// update tiles based on "letters"
 const updateMarkup = (tileNumber, letter) => {
 	document.querySelector("#guessTile" + tileNumber).innerHTML = letter;
 }
@@ -61,7 +64,38 @@ const deleteLetter = () => {
 	deleteMarkup(currentTile);
 }
 
-//delete markup
+// delete markup
 const deleteMarkup = (tileNumber) => {
 	document.querySelector("#guessTile" + tileNumber).innerHTML = null;
+}
+
+// check letter to solution 
+const checkLetter = (position) => {
+	let guessedLetter = currentGuess.dataset.letters.charAt(position);
+	let solutionLetter = solutionWord.charAt(position);
+
+	// if match
+	if (guessedLetter == solutionLetter) {
+		console.log("match");
+	}
+
+	// if present
+	else if (solutionWord.includes(guessedLetter)) {
+		console.log("present");
+	}
+
+	// if does not exist
+	else {
+		console.log("false");
+	}
+}
+
+const revealTile = (status) => {
+	switch(status) {
+		case "match":
+
+		case "present":
+
+		case "false":
+	}
 }
