@@ -37,8 +37,10 @@ document.addEventListener('keydown', (e) => {
 	// enter
 	else if (keyPress == "Enter" && currentGuess.dataset.letters.length == 5) {
 		for (let i = 0; i<5; i++) {
+			setTimeout(() => {
+				revealTile(i,checkLetter(i))
+			}, i * 200);
 			checkLetter(i);
-			revealTile(i, checkLetter(i));
 		}
 	}
 })
@@ -96,13 +98,12 @@ const revealTile = (i, status) => {
 	let tileNumber = i + 1;
 	let tile = document.querySelector('#guessTile' + tileNumber);
 
-	if (status === "match") {
-		tile.classList.add("match");
-	}
-	else if (status === "present") {
-		tile.classList.add("present");
-	}
-	else {
-		tile.classList.add("absent");
-	}
+	tile.classList.add("flip-in");
+	setTimeout(() => {
+		tile.classList.add(status);
+	}, 250);
+	setTimeout(() => {
+		tile.classList.add("flip-out")
+	}, 250);
+
 }
