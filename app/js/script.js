@@ -54,7 +54,10 @@ const updateLetters = (letter) => {
 
 // update tiles based on "letters"
 const updateMarkup = (tileNumber, letter) => {
-	document.querySelector("#guessTile" + tileNumber).innerHTML = letter;
+	document.querySelector("#guess" + guessCount + "Tile" + tileNumber).innerHTML = letter;
+	let tile = document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
+
+	tile.classList.add("has-letter");
 }
 
 // delete last letter
@@ -68,7 +71,10 @@ const deleteLetter = () => {
 
 // delete markup
 const deleteMarkup = (tileNumber) => {
-	document.querySelector("#guessTile" + tileNumber).innerHTML = null;
+	document.querySelector("#guess" + guessCount + "Tile" + tileNumber).innerHTML = null;
+	let tile = document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
+
+	tile.classList.remove("has-letter")
 }
 
 // check letter to solution 
@@ -96,7 +102,7 @@ const revealTile = (i, status) => {
 	console.log(i);
 	console.log(status);
 	let tileNumber = i + 1;
-	let tile = document.querySelector('#guessTile' + tileNumber);
+	let tile = document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
 
 	tile.classList.add("flip-in");
 	setTimeout(() => {
