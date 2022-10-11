@@ -38,12 +38,31 @@ document.addEventListener('keydown', (e) => {
 	else if (keyPress == "Enter" && currentGuess.dataset.letters.length == 5) {
 		for (let i = 0; i<5; i++) {
 			setTimeout(() => {
-				revealTile(i,checkLetter(i))
+				revealTile(i,checkLetter(i));
 			}, i * 200);
 			checkLetter(i);
 		}
 	}
 })
+
+//check if it matches the solution word
+const checkWin = () => {
+	if (currentGuess.dataset.letters == solutionWord) {
+		for (let i = 0; i < 5; i++) {
+			setTimeout(() => {
+				let tileNumber = i + 1;
+				let tile = document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
+				tile.classList.remove("flip-out");
+				tile.classList.add("jump");
+			}, i * 100);
+		}
+		console.log("game is won!")
+	}
+	else {
+		guessCount = guessCount + 1;
+		currentGuess = document.querySelector("#guess" + guessCount);
+	}
+}
 
 // update "letters"
 const updateLetters = (letter) => {
@@ -102,14 +121,20 @@ const revealTile = (i, status) => {
 	console.log(i);
 	console.log(status);
 	let tileNumber = i + 1;
-	let tile = document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
+	let tile =  document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
 
 	tile.classList.add("flip-in");
 	setTimeout(() => {
 		tile.classList.add(status);
+		tile.classList.remove("flip-in")
 	}, 250);
 	setTimeout(() => {
 		tile.classList.add("flip-out")
 	}, 250);
 
+	if (i == 4) {
+		setTimeout(() => {
+			checkWin();
+		}, 1000);
+	}
 }
