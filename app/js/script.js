@@ -77,6 +77,7 @@ const updateMarkup = (tileNumber, letter) => {
 	let tile = document.querySelector('#guess' + guessCount + 'Tile' + tileNumber);
 
 	tile.classList.add("has-letter");
+	tile.classList.add("type-letter");
 }
 
 // delete last letter
